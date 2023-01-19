@@ -21,4 +21,4 @@
 
 close : #
 
-- Issue number close : # 에는 뒤에 번호를 붙여주면 생성해주었던 이슈가 닫힙니다! ex) close : #6
+- Issue number close : # 뒤에 번호를 붙여주면 생성해주었던 이슈가 닫힙니다! ex) close : #6
