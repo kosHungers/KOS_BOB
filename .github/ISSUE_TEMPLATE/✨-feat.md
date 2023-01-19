@@ -1,10 +1,9 @@
 ---
-name: "✨ feat"
+name: '✨ feat'
 about: 기능구현 issue templete
-title: "✨ feat: "
-labels: help wanted
+title: '✨ feat: '
+labels: Feat
 assignees: ''
-
 ---
 
 ### 기능 요청사항
