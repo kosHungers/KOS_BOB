@@ -1,34 +1,51 @@
+import React, { useState, useContext } from 'react';
+import { DiningListContext } from '../../Context/DiningListContext';
+import DetailModal from '../DetailModal/DetailModal';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 function BasicExample() {
+  const { state } = useContext(DiningListContext);
+
+  const [show, setShow] = useState(false);
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
+
   return (
     <>
-      <Card style={{ width: '18rem' }}>
-        <Card.Img
-          style={{ height: '12rem' }}
-          variant="top"
-          src="https://cdn.pixabay.com/photo/2016/04/14/17/01/soup-1329266__340.jpg"
-        />
-        <Card.Body>
-          <Card.Title>도영 국밥</Card.Title>
-          <Card.Text>인천광역시 원인재로 88 104동</Card.Text>
-          <Button variant="dark">자세히 보기</Button>
-        </Card.Body>
-      </Card>
-
-      <Card style={{ width: '18rem' }}>
-        <Card.Img
-          style={{ height: '12rem' }}
-          variant="top"
-          src="https://cdn.dominos.co.kr/admin/upload/goods/20200311_x8StB1t3.jpg"
-        />
-        <Card.Body>
-          <Card.Title>도영쓰 피자</Card.Title>
-          <Card.Text>인천광역시 원인재로 88 104동</Card.Text>
-          <Button variant="dark">자세히 보기</Button>
-        </Card.Body>
-      </Card>
+      {state.map((state) => {
+        return (
+          <Card style={{ width: '18rem' }} key={state.연번}>
+            <Card.Img
+              style={{ height: '12rem' }}
+              variant="top"
+              src="https://cdn.pixabay.com/photo/2016/04/14/17/01/soup-1329266__340.jpg"
+            />
+            <Card.Body>
+              <Card.Title>{state['업 소 명']}</Card.Title>
+              <Card.Text>{state['소재지']}</Card.Text>
+              <Button
+                variant="dark"
+                onClick={() => {
+                  console.log(state, setShow, handleShow, handleClose);
+                  handleShow();
+                  show && (
+                    <DetailModal
+                      key={state.연번}
+                      isShow={setShow}
+                      handleShow={handleShow}
+                      handleClose={handleClose}
+                      diningData={state}
+                    />
+                  );
+                }}
+              >
+                자세히 보기
+              </Button>
+            </Card.Body>
+          </Card>
+        );
+      })}
     </>
   );
 }
