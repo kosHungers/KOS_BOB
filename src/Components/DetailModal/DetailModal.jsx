@@ -1,24 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-function DetailModal(props) {
-  console.log(props);
+function DetailModal({ diningData }) {
+  console.log(diningData);
+
+  const [show, setShow] = useState(false);
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
 
   return (
     <>
-      <Modal key={props.key} isShow={props.isShow} onHide={props.handleClose}>
+      <Button variant="primary" onClick={handleShow}>
+        더 보기
+      </Button>
+
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>{diningData['업 소 명']}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        <Modal.Body>{diningData['소재지']}</Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={props.handleClose}>
-            Close
+          <Button variant="secondary" onClick={handleClose}>
+            창 닫기
           </Button>
-          <Button variant="primary" onClick={props.handleClose}>
+          {/* <Button variant="primary" onClick={handleClose}>
             Save Changes
-          </Button>
+          </Button> */}
         </Modal.Footer>
       </Modal>
     </>

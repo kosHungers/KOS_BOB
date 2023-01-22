@@ -1,15 +1,10 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { DiningListContext } from '../../Context/DiningListContext';
 import DetailModal from '../DetailModal/DetailModal';
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 function BasicExample() {
   const { state } = useContext(DiningListContext);
-
-  const [show, setShow] = useState(false);
-  const handleShow = () => setShow(true);
-  const handleClose = () => setShow(false);
 
   return (
     <>
@@ -23,25 +18,8 @@ function BasicExample() {
             />
             <Card.Body>
               <Card.Title>{state['업 소 명']}</Card.Title>
-              <Card.Text>{state['소재지']}</Card.Text>
-              <Button
-                variant="dark"
-                onClick={() => {
-                  console.log(state, setShow, handleShow, handleClose);
-                  handleShow();
-                  show && (
-                    <DetailModal
-                      key={state.연번}
-                      isShow={setShow}
-                      handleShow={handleShow}
-                      handleClose={handleClose}
-                      diningData={state}
-                    />
-                  );
-                }}
-              >
-                자세히 보기
-              </Button>
+              <Card.Text>032-{state['전화번호']}</Card.Text>
+              <DetailModal diningData={state} />
             </Card.Body>
           </Card>
         );
