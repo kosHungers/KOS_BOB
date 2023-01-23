@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import MapContainer from './MapContainer';
 
 function DetailModal({ diningData }) {
-  console.log(diningData);
+  // console.log(diningData);
 
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
@@ -21,12 +22,10 @@ function DetailModal({ diningData }) {
         </Modal.Header>
         <Modal.Body>{diningData['소재지']}</Modal.Body>
         <Modal.Footer>
+          <MapContainer diningData={diningData} />
           <Button variant="secondary" onClick={handleClose}>
             창 닫기
           </Button>
-          {/* <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button> */}
         </Modal.Footer>
       </Modal>
     </>
