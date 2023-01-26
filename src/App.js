@@ -3,16 +3,19 @@
 import BasicExample from './Components/Card/Card';
 import { Container } from 'react-bootstrap';
 import Search from './Components/Search/Search';
+import Category from './Components/Category/Category';
+import { useState } from 'react';
 
 function App() {
-  // const { state } = useContext(DiningListContext);
+  
+  const [categoryMenu,setCategoryMenu] = useState([]);
 
-  // console.log(state);
   return (
     <>
       <Container>
         <Search/>
-        <BasicExample />
+        <Category categoryMenu={categoryMenu} setCategoryMenu={setCategoryMenu}/>
+        <BasicExample categoryMenu={categoryMenu}/>
       </Container>
     </>
   );
