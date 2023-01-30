@@ -35,7 +35,7 @@ function Search() {
         <Form onSubmit={onSubmitRestaurant} id='search-form' className='me-3 w-50'>
           <Form.Group controlId="restaurant-search">
             <Form.Label className="visually-hidden">검색</Form.Label>
-            <Form.Control onChange={onChangeText} value={searchText} type="text" placeholder="식당을 검색해주세요" />
+            <Form.Control onChange={onChangeText} value={searchText} type="text" id="searchText" placeholder="식당을 검색해주세요" />
           </Form.Group>
         </Form>
         <Button className='d-flex justify-content-center' variant="primary" form='search-form' type="submit">
