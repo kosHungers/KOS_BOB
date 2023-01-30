@@ -1,27 +1,15 @@
-// import { useContext } from 'react';
-// import { DiningListContext } from './Context/DiningListContext';
-import BasicExample from './Components/Card/Card';
-import { Container } from 'react-bootstrap';
-import Search from './Components/Search/Search';
-import RightNavbar from './Pages/RightNavbar';
-import Category from './Components/Category/Category';
-import { useState } from 'react';
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import Router from './Routes/Router';
+import Home from './Pages/Home';
 
 function App() {
-  const [categoryMenu, setCategoryMenu] = useState([]);
-
   return (
-    <>
-      <Container>
-        <RightNavbar />
-        <Search />
-        <Category
-          categoryMenu={categoryMenu}
-          setCategoryMenu={setCategoryMenu}
-        />
-        <BasicExample categoryMenu={categoryMenu} />
-      </Container>
-    </>
+    <BrowserRouter>
+      <Router>
+        <Home />
+      </Router>
+    </BrowserRouter>
   );
 }
 
