@@ -30,7 +30,7 @@ function RightNavbar() {
             >
               <BsSearch />
             </Nav.Link>
-            <Nav.Link as={Link} to="/signup">
+            <Nav.Link as={Link} to="/member">
               <BsFillDoorOpenFill />
             </Nav.Link>
             <Nav.Link as={Link} to="/review">
